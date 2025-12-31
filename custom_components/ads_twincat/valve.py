@@ -75,10 +75,12 @@ class AdsValve(AdsEntity, ValveEntity):
 
     def open_valve(self, **kwargs) -> None:
         """Open the valve."""
-        self._ads_hub.write_by_name(self._ads_var, True, pyads.PLCTYPE_BOOL)
-        self._attr_is_closed = False
+        result = self._ads_hub.write_by_name(self._ads_var, True, pyads.PLCTYPE_BOOL)
+        if result is not None:
+            self._attr_is_closed = False
 
     def close_valve(self, **kwargs) -> None:
         """Close the valve."""
-        self._ads_hub.write_by_name(self._ads_var, False, pyads.PLCTYPE_BOOL)
-        self._attr_is_closed = True
+        result = self._ads_hub.write_by_name(self._ads_var, False, pyads.PLCTYPE_BOOL)
+        if result is not None:
+            self._attr_is_closed = True

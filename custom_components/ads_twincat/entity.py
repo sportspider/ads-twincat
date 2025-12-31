@@ -41,7 +41,7 @@ class AdsEntity(Entity):
                 self.entity_id,
                 "connected" if connected else "disconnected",
             )
-            self.async_schedule_update_ha_state()
+            self.schedule_update_ha_state()
 
         self._connection_callback = connection_callback
         self._ads_hub.add_connection_callback(self._connection_callback)
