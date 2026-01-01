@@ -2,11 +2,11 @@
   "domain": "ads_twincat",
   "name": "ADS TwinCAT",
   "version": "1.0.0",
-  "codeowners": ["@mrpasztoradam"],
+  "codeowners": ["@msportspider"],
   "config_flow": true,
   "documentation": "https://github.com/sportspider/ads-twincat",
   "issue_tracker": "https://github.com/sportspider/ads-twincat/issues",
-  "iot_class": "local_push",
+  "iot_class": "local_polling",
   "loggers": ["pyads"],
   "requirements": ["pyads==3.4.0"]
 }
