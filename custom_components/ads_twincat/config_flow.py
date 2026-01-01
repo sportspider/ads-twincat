@@ -236,14 +236,15 @@ class AdsConfigFlow(ConfigFlow, domain=DOMAIN):
         config_entry: ConfigEntry,
     ) -> AdsOptionsFlowHandler:
         """Get the options flow for this handler."""
-        return AdsOptionsFlowHandler()
+        return AdsOptionsFlowHandler(config_entry)
 
 
 class AdsOptionsFlowHandler(OptionsFlow):
     """Handle ADS options."""
 
-    def __init__(self) -> None:
+    def __init__(self, config_entry: ConfigEntry) -> None:
         """Initialize options flow."""
+        self.config_entry = config_entry
         self._entities: list[dict[str, Any]] = []
         self._entity_to_edit: dict[str, Any] | None = None
         self._entity_index: int | None = None
