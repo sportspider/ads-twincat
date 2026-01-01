@@ -245,7 +245,10 @@ class AdsOptionsFlowHandler(OptionsFlow):
     def __init__(self, config_entry: ConfigEntry) -> None:
         """Initialize options flow."""
         self._config_entry = config_entry
-        self._entities: list[dict[str, Any]] = []
+        # Load existing entities from options once during init
+        self._entities: list[dict[str, Any]] = list(
+            config_entry.options.get(CONF_ENTITIES, [])
+        )
         self._entity_to_edit: dict[str, Any] | None = None
         self._entity_index: int | None = None
 
@@ -253,9 +256,6 @@ class AdsOptionsFlowHandler(OptionsFlow):
         self, user_input: dict[str, Any] | None = None
     ) -> ConfigFlowResult:
         """Manage the ADS options - main menu."""
-        # Load existing entities from options
-        self._entities = list(self._config_entry.options.get(CONF_ENTITIES, []))
-
         return self.async_show_menu(
             step_id="init",
             menu_options=["add_entity", "edit_entity", "remove_entity", "finish"],
