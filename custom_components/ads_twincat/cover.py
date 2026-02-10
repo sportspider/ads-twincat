@@ -105,7 +105,7 @@ async def async_setup_entry(
         name = config.get(CONF_NAME)
         ads_var = config.get(CONF_ADS_VAR)
         ads_var_position = config.get(CONF_ADS_VAR_POSITION)
-        ads_var_set_position = config.get(CONF_ADS_VAR_SET_POS)
+        ads_var_pos_set = config.get(CONF_ADS_VAR_SET_POS)
         ads_var_open = config.get(CONF_ADS_VAR_OPEN)
         ads_var_close = config.get(CONF_ADS_VAR_CLOSE)
         ads_var_stop = config.get(CONF_ADS_VAR_STOP)
@@ -115,7 +115,7 @@ async def async_setup_entry(
         if name and (
             ads_var
             or ads_var_position
-            or ads_var_set_position
+            or ads_var_pos_set
             or ads_var_open
             or ads_var_close
         ):
@@ -124,7 +124,7 @@ async def async_setup_entry(
                     ads_hub,
                     ads_var,
                     ads_var_position,
-                    ads_var_set_position,
+                    ads_var_pos_set,
                     ads_var_open,
                     ads_var_close,
                     ads_var_stop,
