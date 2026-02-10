@@ -632,7 +632,7 @@ class AdsOptionsFlowHandler(OptionsFlow):
                     CONF_NAME: user_input[CONF_NAME],
                 }
                 
-                # Add optional fields (only if not empty)
+                # Add optional fields only if provided and non-empty
                 if user_input.get(CONF_ADS_VAR):
                     entity_config[CONF_ADS_VAR] = user_input[CONF_ADS_VAR]
                 if user_input.get(CONF_ADS_VAR_POSITION):
