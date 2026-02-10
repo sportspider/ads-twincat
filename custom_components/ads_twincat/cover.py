@@ -38,7 +38,7 @@ STATE_KEY_POSITION = "position"
 
 PLATFORM_SCHEMA = COVER_PLATFORM_SCHEMA.extend(
     {
-        vol.Required(CONF_ADS_VAR): cv.string,
+        vol.Optional(CONF_ADS_VAR): cv.string,
         vol.Optional(CONF_ADS_VAR_POSITION): cv.string,
         vol.Optional(CONF_ADS_VAR_SET_POS): cv.string,
         vol.Optional(CONF_ADS_VAR_CLOSE): cv.string,
@@ -59,7 +59,7 @@ def setup_platform(
     """Set up the cover platform for ADS (legacy YAML config)."""
     ads_hub = hass.data[DATA_ADS]
 
-    ads_var_is_closed: str = config[CONF_ADS_VAR]
+    ads_var_is_closed: str | None = config.get(CONF_ADS_VAR)
     ads_var_position: str | None = config.get(CONF_ADS_VAR_POSITION)
     ads_var_pos_set: str | None = config.get(CONF_ADS_VAR_SET_POS)
     ads_var_open: str | None = config.get(CONF_ADS_VAR_OPEN)
@@ -105,19 +105,29 @@ async def async_setup_entry(
         name = config.get(CONF_NAME)
         ads_var = config.get(CONF_ADS_VAR)
         ads_var_position = config.get(CONF_ADS_VAR_POSITION)
-        ads_var_set_position = config.get(CONF_ADS_VAR_SET_POS)
+        ads_var_pos_set = config.get(CONF_ADS_VAR_SET_POS)
         ads_var_open = config.get(CONF_ADS_VAR_OPEN)
         ads_var_close = config.get(CONF_ADS_VAR_CLOSE)
         ads_var_stop = config.get(CONF_ADS_VAR_STOP)
         device_class = config.get(CONF_DEVICE_CLASS) or None
         
-        if name and ads_var:
+        # Need at least a name and one control/state variable
+        if name and any(
+            (
+                ads_var,
+                ads_var_position,
+                ads_var_pos_set,
+                ads_var_open,
+                ads_var_close,
+                ads_var_stop,
+            )
+        ):
             covers.append(
                 AdsCover(
                     ads_hub,
                     ads_var,
                     ads_var_position,
-                    ads_var_set_position,
+                    ads_var_pos_set,
                     ads_var_open,
                     ads_var_close,
                     ads_var_stop,
@@ -136,7 +146,7 @@ class AdsCover(AdsEntity, CoverEntity):
     def __init__(
         self,
         ads_hub: AdsHub,
-        ads_var_is_closed: str,
+        ads_var_is_closed: str | None,
         ads_var_position: str | None,
         ads_var_pos_set: str | None,
         ads_var_open: str | None,
