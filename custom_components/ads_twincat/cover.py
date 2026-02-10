@@ -118,6 +118,7 @@ async def async_setup_entry(
             or ads_var_pos_set
             or ads_var_open
             or ads_var_close
+            or ads_var_stop
         ):
             covers.append(
                 AdsCover(
