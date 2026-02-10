@@ -630,10 +630,11 @@ class AdsOptionsFlowHandler(OptionsFlow):
                     CONF_TYPE: ENTITY_TYPE_COVER,
                     CONF_ENTITY_ID: entity_id,
                     CONF_NAME: user_input[CONF_NAME],
-                    CONF_ADS_VAR: user_input[CONF_ADS_VAR],
                 }
                 
-                # Add optional fields
+                # Add optional fields (only if not empty)
+                if user_input.get(CONF_ADS_VAR):
+                    entity_config[CONF_ADS_VAR] = user_input[CONF_ADS_VAR]
                 if user_input.get(CONF_ADS_VAR_POSITION):
                     entity_config[CONF_ADS_VAR_POSITION] = user_input[
                         CONF_ADS_VAR_POSITION
@@ -684,7 +685,7 @@ class AdsOptionsFlowHandler(OptionsFlow):
         data_schema = vol.Schema(
             {
                 vol.Required(CONF_NAME, default=defaults.get(CONF_NAME, "")): cv.string,
-                vol.Required(
+                vol.Optional(
                     CONF_ADS_VAR, default=defaults.get(CONF_ADS_VAR, "")
                 ): cv.string,
                 vol.Optional(

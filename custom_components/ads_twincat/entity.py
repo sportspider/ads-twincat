@@ -18,7 +18,7 @@ class AdsEntity(Entity):
 
     _attr_should_poll = False
 
-    def __init__(self, ads_hub: AdsHub, name: str, ads_var: str) -> None:
+    def __init__(self, ads_hub: AdsHub, name: str, ads_var: str | None) -> None:
         """Initialize ADS binary sensor."""
         self._state_dict: dict[str, Any] = {}
         self._state_dict[STATE_KEY_STATE] = None
