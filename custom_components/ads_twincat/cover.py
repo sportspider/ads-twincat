@@ -111,7 +111,14 @@ async def async_setup_entry(
         ads_var_stop = config.get(CONF_ADS_VAR_STOP)
         device_class = config.get(CONF_DEVICE_CLASS) or None
         
-        if name:
+        # Need at least a name and one control/state variable
+        if name and (
+            ads_var
+            or ads_var_position
+            or ads_var_set_position
+            or ads_var_open
+            or ads_var_close
+        ):
             covers.append(
                 AdsCover(
                     ads_hub,
