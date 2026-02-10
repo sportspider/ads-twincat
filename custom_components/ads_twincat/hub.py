@@ -89,7 +89,11 @@ class AdsHub:
             self._reconnect_task = None
             await self._hass.async_add_executor_job(self._try_reconnect)
 
-        self._reconnect_task = self._hass.async_create_task(reconnect_async())
+        def _create_task():
+            """Create the reconnect task on the event loop."""
+            self._reconnect_task = self._hass.async_create_task(reconnect_async())
+
+        self._hass.loop.call_soon_threadsafe(_create_task)
 
     def _try_reconnect(self) -> None:
         """Try to reconnect to ADS device."""
