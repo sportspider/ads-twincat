@@ -113,14 +113,14 @@ async def async_setup_entry(
         
         # Need at least a name and one control/state variable
         if name and any(
-            [
+            (
                 ads_var,
                 ads_var_position,
                 ads_var_pos_set,
                 ads_var_open,
                 ads_var_close,
                 ads_var_stop,
-            ]
+            )
         ):
             covers.append(
                 AdsCover(
