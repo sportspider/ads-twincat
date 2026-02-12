@@ -1,0 +1,144 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Konfiguracja połączenia ADS TwinCAT",
+        "description": "Skonfiguruj połączenie z urządzeniem ADS TwinCAT",
+        "data": {
+          "device": "Device/Net ID (np. 1.2.3.4.5.6)",
+          "port": "Port",
+          "ip_address": "Adres IP (opcjonalny)"
+        }
+      },
+      "reconfigure": {
+        "title": "Rekonfiguracja połączenia ADS TwinCAT",
+        "description": "Zaktualizuj ustawienia połączenia z urządzeniem ADS TwinCAT",
+        "data": {
+          "device": "Device/Net ID (np. 1.2.3.4.5.6)",
+          "port": "Port",
+          "ip_address": "Adres IP (opcjonalny)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie udało się połączyć z urządzeniem ADS. Sprawdź Device/Net ID, port i adres IP.",
+      "invalid_net_id": "Nieprawidłowy format Net ID. Net ID musi być w formacie x.x.x.x.x.x (np. 1.2.3.4.5.6).",
+      "unknown": "Wystąpił nieoczekiwany błąd. Sprawdź logi, aby uzyskać więcej informacji."
+    },
+    "abort": {
+      "already_configured": "To urządzenie ADS jest już skonfigurowane.",
+      "cannot_connect": "Nie udało się połączyć z urządzeniem ADS podczas importu."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Zarządzaj encjami ADS TwinCAT",
+        "description": "Dodaj, edytuj lub usuń encje ADS TwinCAT",
+        "menu_options": {
+          "add_entity": "Dodaj encję",
+          "edit_entity": "Edytuj encję",
+          "remove_entity": "Usuń encję",
+          "finish": "Zakończ"
+        }
+      },
+      "add_entity": {
+        "title": "Wybierz typ encji",
+        "description": "Wybierz typ encji do dodania",
+        "data": {
+          "type": "Typ encji"
+        }
+      },
+      "configure_switch": {
+        "title": "Konfiguracja przełącznika",
+        "description": "Skonfiguruj encję przełącznika",
+        "data": {
+          "name": "Nazwa",
+          "adsvar": "Nazwa zmiennej ADS"
+        }
+      },
+      "configure_light": {
+        "title": "Konfiguracja oświetlenia",
+        "description": "Skonfiguruj encję oświetlenia",
+        "data": {
+          "name": "Nazwa",
+          "adsvar": "Nazwa zmiennej ADS (wł./wył.)",
+          "adsvar_brightness": "Nazwa zmiennej ADS dla jasności (opcjonalny)"
+        }
+      },
+      "configure_sensor": {
+        "title": "Konfiguracja czujnika",
+        "description": "Skonfiguruj encję czujnika",
+        "data": {
+          "name": "Nazwa",
+          "adsvar": "Nazwa zmiennej ADS",
+          "adstype": "Typ danych ADS",
+          "unit_of_measurement": "Jednostka miary (opcjonalny)",
+          "device_class": "Klasa urządzenia (opcjonalny)",
+          "state_class": "Klasa stanu (opcjonalny)",
+          "factor": "Współczynnik (opcjonalny)"
+        }
+      },
+      "configure_binary_sensor": {
+        "title": "Konfiguracja czujnika binarnego",
+        "description": "Skonfiguruj encję czujnika binarnego",
+        "data": {
+          "name": "Nazwa",
+          "adsvar": "Nazwa zmiennej ADS",
+          "device_class": "Klasa urządzenia (opcjonalny)"
+        }
+      },
+      "configure_cover": {
+        "title": "Konfiguracja osłony",
+        "description": "Skonfiguruj encję osłony",
+        "data": {
+          "name": "Nazwa",
+          "adsvar": "Nazwa zmiennej ADS (stan zamknięcia)",
+          "adsvar_position": "Zmienna ADS dla pozycji (opcjonalny)",
+          "adsvar_set_position": "Zmienna ADS do ustawienia pozycji (opcjonalny)",
+          "adsvar_open": "Zmienna ADS do otwarcia (opcjonalny)",
+          "adsvar_close": "Zmienna ADS do zamknięcia (opcjonalny)",
+          "adsvar_stop": "Zmienna ADS do zatrzymania (opcjonalny)",
+          "device_class": "Klasa urządzenia (opcjonalny)"
+        }
+      },
+      "edit_entity": {
+        "title": "Wybierz encję do edycji",
+        "description": "Wybierz encję do edycji",
+        "data": {
+          "entity_to_edit": "Encja"
+        }
+      },
+      "remove_entity": {
+        "title": "Wybierz encję do usunięcia",
+        "description": "Wybierz encję do usunięcia",
+        "data": {
+          "entity_to_remove": "Encja"
+        }
+      }
+    },
+    "error": {
+      "entity_exists": "Encja o tej nazwie już istnieje."
+    }
+  },
+  "services": {
+    "write_data_by_name": {
+      "description": "Zapisz wartość do podłączonego urządzenia ADS TwinCAT.",
+      "fields": {
+        "adstype": {
+          "description": "Typ danych zmiennej do zapisu.",
+          "name": "Typ ADS"
+        },
+        "adsvar": {
+          "description": "Nazwa zmiennej do zapisu.",
+          "name": "Zmienna ADS"
+        },
+        "value": {
+          "description": "Wartość do zapisania w zmiennej.",
+          "name": "Wartość"
+        }
+      },
+      "name": "Zapisz dane po nazwie"
+    }
+  }
+}
