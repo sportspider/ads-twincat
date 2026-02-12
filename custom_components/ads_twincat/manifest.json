@@ -1,7 +1,7 @@
 {
   "domain": "ads_twincat",
   "name": "ADS TwinCAT",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "codeowners": ["@msportspider"],
   "config_flow": true,
   "documentation": "https://github.com/sportspider/ads-twincat",
