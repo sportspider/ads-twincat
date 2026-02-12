@@ -2,7 +2,7 @@
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
 [![GitHub Release](https://img.shields.io/github/v/release/sportspider/ads-twincat)](https://github.com/sportspider/ads-twincat/releases)
-[![License](https://img.shields.io/github/license/sportspider/ads-twincat)](LICENSE)
+[![License](https://img.shields.io/github/license/sportspider/ads-twincat)](https://github.com/sportspider/ads-twincat/LICENSE)
 
 Home Assistant custom integration for Beckhoff TwinCAT devices using the ADS (Automation Device Specification) protocol.
 
