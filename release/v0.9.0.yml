@@ -1,0 +1,21 @@
+---
+
+name: 'v0.9.0'
+draft: false
+prerelease: false
+description: |
+  Initial release
+
+  ## Features
+  - Binary Sensors: Monitor boolean PLC variables
+  - Sensors: Read numeric values from PLC with support for various data types
+  - Switches: Control boolean PLC variables
+  - Lights: Control lights with optional brightness support
+  - Covers: Control blinds, shutters, and other covers with position support
+  - Valves: Control valve devices
+  - Select: Control enum/selection variables
+
+  ## Installation
+  Install via HACS by adding this repository as a custom repository.
+
+---
